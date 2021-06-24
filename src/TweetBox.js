@@ -42,16 +42,18 @@ function TweetBox() {
 
     const sendTweet = e => {
         e.preventDefault();
-
+        const imgCheck = imgUrl ? imgUrl:"";
         db.collection('posts').add({
             displayName : "Priyanshi",
             username: "pm",
             verified: "true",
             text: tweetMessage,
             avatar: "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png",
-            image:imgUrl
+            image:imgCheck,
+            timestamp:firebase.firestore.FieldValue.serverTimestamp(),
         });
         setTweetmessage("");
+        imgUrl = "";
         // setTweetImage("");
     };
 
