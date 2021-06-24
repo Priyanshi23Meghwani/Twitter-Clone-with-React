@@ -1,0 +1,44 @@
+.follow{
+    border-bottom: 1px solid var(--twitter-background);
+}
+
+.follow__header{
+    border-top: 1px solid var(--twitter-background);
+    border-bottom: 1px solid var(--twitter-background);
+    padding: 15px;
+}
+
+.followSubComponent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--twitter-background);
+
+}
+.followSubComponent__text>p{
+    color:#5D7285;
+}
+.followSubComponent__left{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 10px;
+}
+
+.followSubComponent__text{
+    padding: 20px 20px;
+}
+
+.followSubComponent__button{
+    padding: 15px;
+}
+
+.followSubComponent__button__follow{
+    border: 1px solid !important;
+    border-radius: 20px !important;
+    border-color: var(--twitter-color) !important;
+    color: var(--twitter-color) !important;
+    font-weight: 600 !important;
+    text-transform: inherit !important;
+    padding: 5px 20px !important;
+}

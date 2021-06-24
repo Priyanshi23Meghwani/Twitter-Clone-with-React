@@ -1,0 +1,30 @@
+.notification{
+    flex:0.48;
+    border-right:1px solid var(--twitter-background);
+}
+.notification__header{
+    position:sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+    border-bottom: 2px solid var(--twitter-background);
+    padding: 15px 18px 0 18px;
+}
+
+.notification__header__heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    padding-bottom: 20px;
+}
+
+.notification__body{
+    display: grid;
+    place-items: center;
+    height: 80vh;
+    
+}
+
+

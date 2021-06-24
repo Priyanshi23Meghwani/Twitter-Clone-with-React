@@ -1,0 +1,62 @@
+.tweetBox {
+    padding-bottom: 10px;
+    border-bottom: 8px solid var(--twitter-background);
+    padding-right: 10px;
+}
+
+.tweetBox > form {
+    display: flex;
+    flex-direction: column;
+}
+.tweetBox__input{
+    display: flex;
+    align-items: center;
+    /* flex-direction: column;  */
+    /* not working, should put avatar and input together in one line */
+}
+
+
+.tweetBox__input > input {
+    flex: 1;
+    margin: 20px;
+    font-size: 20px;
+    border: none;
+    
+}
+::placeholder{
+    color:rgb(95, 93, 93);
+}
+
+
+.tweetBox__bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 0 20px;
+    height: 50px;
+}
+
+.tweetBox__bottom__icons{
+    display: flex;
+    justify-content: space-around;
+    width: 120px;
+    padding-left: 75px;
+    align-items: center;
+}
+
+.tweetBox__tweetButton{
+background-color: var(--twitter-color) !important;
+border: none !important;
+color: white !important;
+font-weight: 900 !important;
+text-transform: inherit !important;
+border-radius: 30px !important;
+width: 80px;
+height: 40px !important;
+/* margin-top: 20px !important; */
+margin-left: auto !important;  
+}
+
+.tweetBox__tweetButton:disabled{
+    background-color: rgb(207, 198, 198) !important;
+}

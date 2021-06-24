@@ -1,0 +1,140 @@
+.explore{
+    flex:0.48; 
+    border-right: 1px solid var(--twitter-background);
+    overflow-y: scroll;
+}
+.explore::-webkit-scrollbar {
+    display:none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.explore {
+    -ms-overflow-style: none;     /* IE and Edge */
+    scrollbar-width: none;        /* firefox */
+}
+
+.explore__header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between; 
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;    
+    padding: 5px 18px 10px 18px;  
+}
+
+.explore__top{
+    border: 1px solid var(--twitter-background);
+}
+.widgets__input {
+    display: flex;
+    align-items: center;
+    background-color: var(--twitter-background);
+    width: 85%; 
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+/* not working */
+.widgets__input:focus{      
+    border: 10px solid red;
+}
+
+.widgets__input > input {
+    border: none;
+    background-color: var(--twitter-background);
+    padding: 10px;
+}
+
+.widgets__searchIcon {
+    color: gray;
+    padding-left:10px;
+    
+}
+
+.explore__header__icon{
+    color:var(--twitter-color);
+    margin-top: 8px !important;
+}
+
+.explore__list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding:0;
+    color:#5B7083;
+    font-weight:600;
+}
+.explore__list > li{
+    padding: 13px;
+}
+.explore__list > li:hover{
+    background-color:  #e8f5fe;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out; 
+    cursor:pointer;   
+}
+.explore__options{
+    border-bottom: 1px solid var(--twitter-background);
+}
+.active{     
+    color: var(--twitter-color);
+    /* border-bottom: 5px solid var(--twitter-color); */
+    position: relative;
+}
+.active:before{
+    left:25%;
+    right:20%;
+    content:"";
+    border-bottom: 5px solid var(--twitter-color);
+    position: absolute;
+    width: 50%;
+    bottom:3px;
+
+}
+
+.explore__body{
+    border-bottom: 10px solid var(--twitter-background);
+
+}
+.explore__body__image{
+    position:relative;
+    height:300px;
+    width: 100%;
+    background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.959) 0%, rgba(0, 0, 0, 0.137) 30%),url("https://source.unsplash.com/1600x900/?people,cars") ;
+    background-position: center;
+    background-size: contain;
+    /* margin-bottom: 10px; */
+}
+
+.explore__body__image__text{
+    color:white;
+    position:absolute;
+    padding-left: 20px;
+    bottom: 40px;
+    width:55%;
+}
+
+.exploreHash{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid var(--twitter-background) ;
+    border-bottom:1px solid var(--twitter-background) ;
+    padding:20px;
+    line-height: 1.5;
+}
+
+.exploreHash:hover{
+cursor: pointer;
+background-color: var(--twitter-background);
+}
+.exploreHash__text__p1{
+    color:rgb(94, 91, 91);
+    font-size: 14px;
+}
+.exploreHash__img>img{
+    height: 80px;
+    width:auto;
+    border-radius: 5px;
+}

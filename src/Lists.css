@@ -1,0 +1,53 @@
+.list{
+    flex:0.48;
+    border-right:1px solid var(--twitter-background);
+}
+
+.list__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position:sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+}
+
+.list__header__text{
+    display: flex;
+    align-items: center;
+}
+
+.list__header__text>h2{
+    margin: 12px 10px;
+}
+
+.list__header__icon{
+    padding:0 17px;
+    display: flex;
+    justify-content: space-around;
+    width:11%;
+}
+.list__body__pinned{
+    border-bottom: 10px solid #F7F9FA;
+}
+
+.list__body__pinned__heading{
+    padding:10px;
+    font-size:18px;
+    border-bottom: 1px solid var(--twitter-background);
+}
+
+.list__body__pinned__text{
+    display: grid;
+    place-items: center;
+    height:100px;
+    color:#627688;
+    font-size: 15px;
+    border-bottom: 1px solid var(--twitter-background);
+}
+
+.list__body__pinned__yourList{
+    border-top: 1px solid var(--twitter-background);
+}

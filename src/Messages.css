@@ -1,0 +1,85 @@
+.messages{
+    flex:0.8;
+    display: flex;
+}
+
+
+.messageMid{
+    flex:0.38;
+}
+
+.messageMid__header{
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+    padding: 15px 18px;
+}
+.messageMid__header__icons > .MuiSvgIcon-root{    
+    color: var(--twitter-color); 
+    padding: 0 5px;
+}
+
+.messageMid__header{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.messageMid__body{
+    padding-top: 40px;
+    border-right: 1px solid var(--twitter-background);
+    height: 100vh;   
+}
+
+.messageMid__dummy__text{
+    text-align: center;
+}
+.messageMid__dummy__text >p{
+    padding:12px;
+    color:gray;
+}
+
+.start_a_conversation{
+    background-color: var(--twitter-color) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    height: 40px !important;
+    margin-top:8px !important;
+    /* padding: 4px !important; */
+}
+
+
+
+/* Message Right */
+
+.messageRight{
+    flex:0.62;
+    display: grid;
+    place-items: center;
+}
+.messageRight__dummy__text{
+    text-align: center;
+}
+
+.messageRight__dummy__text > p{
+    padding: 12px;
+    color: gray;
+}
+
+.new__message__button{
+    background-color: var(--twitter-color) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    height: 40px !important;
+    width: 120px !important;
+    margin-top: 8px !important;
+}
