@@ -70,8 +70,10 @@
 }
 
 .profile__body__text{
-    font-size: 15px;
+    font-size: 14px;
     padding-top: 12px;
+    line-height: 1.5;
+    color:darkslategray;
 }
 
 .profile__body__icons{
@@ -91,7 +93,7 @@
 
 .profile__body__followings{
     display: flex;
-    width:30%;
+    width:40%;
     padding-top: 12px;
     justify-content: space-between;
     font-size: 14px;

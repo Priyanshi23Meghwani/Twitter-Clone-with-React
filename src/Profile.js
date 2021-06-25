@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import "./Profile.css";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -10,9 +10,46 @@ import CakeOutlinedIcon from '@material-ui/icons/CakeOutlined';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import Widgets from "./Widgets";
 import Post from "./Post";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useStateValue } from './StateProvider';
+import FlipMove from "react-flip-move";
+import db from "./firebase";
+import axios from 'axios';
 
+
+const NoPost = () =>{
+    return(
+        <div className="noPost">
+            <h3 style={{color:"#9CA9B4"}}>No tweets yet. Start TWEETING.</h3>
+        </div>
+    );
+}
+
+var quote_bio;
 function Profile(){
+
+            const [{user}, dispatch] = useStateValue();
+            const [posts, setPosts] = useState([]);
+            useEffect(async() => {
+                const tweettest= await db.collection('posts').where("userid","==",user.uid).orderBy("timestamp","desc").get();
+                tweettest.forEach((tweet) => {
+                    
+                    setPosts(posts => [...posts,tweet.data()]);
+                    });
+                    
+                
+            }, []) 
+            
+
+            useEffect(async() => {
+                const bio = await axios.get("https://quotes.rest/qod",{
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                })
+                 quote_bio = bio.data.contents.quotes[0].quote;
+            }, [])
+
     return(
         <>
         <div className="profile">
@@ -21,7 +58,7 @@ function Profile(){
                 <ArrowBackIcon  style = {{color:"var(--twitter-color)"}} /> 
             </Link>
                 
-                <h3>Priyanshi Meghwani</h3>
+            <h3>{user.displayName}</h3>
             </div>
 
             <div className="profile__description">
@@ -32,7 +69,8 @@ function Profile(){
                     </div>
 
                     <div className="profile__description__coverImg__dp">
-                        <img src="https://source.unsplash.com/480x480/?man"/>
+                        {/* <img src="https://source.unsplash.com/480x480/?man"/> */}
+                        <img src={user.photoURL}/>
                     </div>    
                 </div>
                 <div className="profile__description__icons">
@@ -48,18 +86,18 @@ function Profile(){
 
             <div className="profile__body">
                 <div className="profile__body__userName">
-                    <h2>DarkRider</h2>
-                    <p>@darkrider_88</p>
+                    <h2>{user.displayName}</h2>
+                    <p>@{(user.email).split("@")[0]}</p>
                 </div>
                 <div className="profile__body__text">
-                    <p>I am no one. CTF player.. learner..</p>
+                    <p>{quote_bio}</p>
                 </div>
                 <div className="profile__body__icons">
                     <div className="profile__body__icons__div"> <LocationOnOutlinedIcon /> 
                         <span>India</span>
                     </div>
                     <div className="profile__body__icons__div" > <LinkOutlinedIcon />
-                        <span styles={{paddingLeft:"5px"}} >https://securelydark.blogspot.com/</span>
+                    <span styles={{paddingLeft:"5px"}}>https://google.com</span>
                     </div>
                     <div className="profile__body__icons__div"> <CakeOutlinedIcon />
                     <span>Born August 8</span>
@@ -70,8 +108,8 @@ function Profile(){
                 </div>
                 <div className="profile__body__followings">
                     
-                    <p><b>93</b>Following</p>
-                    <p><b>15</b>Followers</p>
+                    <p><b>{Math.floor(Math.random()*500)}{" "}</b>Following</p>
+                    <p><b>{Math.floor(Math.random()*500)}{" "}</b>Followers</p>
 
                 </div>
 
@@ -79,15 +117,21 @@ function Profile(){
             </div>
 
             <Navigations nav_array={["Tweets","Tweets & Replies","Media","Likes"]}/>
-            <Post 
-                    key = {"1"}
-                    displayName = {"DarkRider"} 
-                    username = {"darkrider_88"}
-                    verified = {true}
-                    text = {"You want to save retail traders, then bring back margin rule .      #SEBInewMarginRules"}
-                    avatar = {"https://cdn2.iconfinder.com/data/icons/avatars-99/62/avatar-370-456322-512.png"}
-                     />
-            <Post 
+
+            { posts.length!==0?<FlipMove>{posts.map(post =>(
+                    <Post 
+                    key = {post.text}
+                    displayName = {post.displayName} 
+                    username = {post.username}
+                    verified = {post.verified}
+                    text = {post.text}
+                    avatar = {user.photoURL}
+                    // avatar = {post.avatar}
+                    image = {post.image} />
+                ))}</FlipMove>: <NoPost/>
+            }
+            
+            {/* <Post 
                     key = {"1"}
                     displayName = {"DarkRider"} 
                     username = {"darkrider_88"}
@@ -95,7 +139,7 @@ function Profile(){
                     text = {"You want to save retail traders, then bring back margin rule .      #SEBInewMarginRules"}
                     avatar = {"https://cdn2.iconfinder.com/data/icons/avatars-99/62/avatar-370-456322-512.png"}
                     image = {"https://i.natgeofe.com/n/4bf47147-ce80-49c6-98ae-52f63349045f/67655.jpg"} 
-                     />
+                     /> */}
         </div>
         <Widgets />
         </>

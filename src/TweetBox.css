@@ -16,17 +16,18 @@
 }
 
 
-.tweetBox__input > input {
+.tweetBox__input > textarea {
     flex: 1;
     margin: 20px;
     font-size: 20px;
     border: none;
-    
+    outline: none;
+    padding: 20px;
+    resize:none;    
 }
 ::placeholder{
     color:rgb(95, 93, 93);
 }
-
 
 .tweetBox__bottom{
     display: flex;
@@ -59,4 +60,7 @@ margin-left: auto !important;
 
 .tweetBox__tweetButton:disabled{
     background-color: rgb(207, 198, 198) !important;
+}
+.MuiIcon-root:hover{
+    background-color: red !important;
 }

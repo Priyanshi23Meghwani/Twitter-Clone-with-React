@@ -42,7 +42,7 @@
     padding-bottom: 35px;
 }
 
-.login__body__area__signup{
+.login__body__area__login{
     background-color: var(--twitter-color) !important;
     border: none !important;
     color: white !important;
@@ -54,11 +54,11 @@
     margin-bottom: 20px !important;
 }
 
-.login__body__area__signup:hover{
+.login__body__area__login:hover{
     background-color:#0a8ddf !important;
 }
 
-.login__body__area__login{
+/* .login__body__area__login{
     border: 1px solid !important;
     border-radius: 30px !important;
     border-color: var(--twitter-color) !important;
@@ -67,13 +67,13 @@
     text-transform: inherit !important;
     height: 45px !important;
     width:390px !important;
-}
+} */
 
 .login__footer{
     display: flex;
-    font-size: 12px;
-    justify-content: space-around;
-    width: auto;
+    font-size: 11px;
+    justify-content: space-between;
+    width: 100%;
     padding-top:15px;
     color:#637096;
     padding-bottom:10px ;

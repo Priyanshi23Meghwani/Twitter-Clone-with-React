@@ -3,6 +3,8 @@ import "./Feed.css";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
 import db from "./firebase";
+
+import { useStateValue } from './StateProvider';
 import FlipMove from "react-flip-move";
 
 const NoPost = () =>{
@@ -14,12 +16,16 @@ const NoPost = () =>{
 }
 
 function Feed() {
-
+    const [{user}, dispatch] = useStateValue();
     const [posts, setPosts] = useState([]);
-    useEffect(() => {
+
+    useEffect(async() => {
         db.collection('posts').orderBy("timestamp","desc").onSnapshot(snapshot => (
             setPosts(snapshot.docs.map(doc => doc.data()))
         ))
+    
+        
+        
     }, [])
 
     return (
@@ -28,7 +34,7 @@ function Feed() {
                 <h3>Home</h3>
             </div>
             <TweetBox />
-            {/* {console.log(posts)} */}
+            
             
                 
 

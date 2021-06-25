@@ -8,6 +8,10 @@ import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import { storage } from './firebase';
 import firebase from "firebase";
 import { CircularProgress } from '@material-ui/core';
+import { useStateValue } from './StateProvider';
+import Tooltip from "@material-ui/core/Tooltip";
+
+
 
 
 var imgUrl;
@@ -17,11 +21,15 @@ var imgUrl;
 
 function TweetBox() {
 
-
+    const [{user},dispatch] = useStateValue();
     const [buttonLoader, setButtonLoader] = useState(false);
     const [tweetMessage, setTweetmessage ] = useState("");
     // const [tweetImage, setTweetImage ] = useState("");
 
+    const addEmoji = () =>{
+        setTweetmessage(`${tweetMessage} 😇`);
+    }
+    
     const onImageUpload = (event) => {
         if(event.target.files[0])
         {
@@ -29,12 +37,12 @@ function TweetBox() {
             setButtonLoader(true);
             const uploadTask = storage.ref(`/tweet-images/${img.name}`).put(img);
             uploadTask.on('state_changed',
-            (snapshot) => console.log(snapshot),
+            (snapshot) => (snapshot),
              (err) => console.log(err),
              async () => {
                  imgUrl = await storage.ref('tweet-images').child(img.name).getDownloadURL();
                  setButtonLoader(false);
-                 console.log(imgUrl);
+                 
                 
              })
         }    
@@ -44,11 +52,12 @@ function TweetBox() {
         e.preventDefault();
         const imgCheck = imgUrl ? imgUrl:"";
         db.collection('posts').add({
-            displayName : "Priyanshi",
-            username: "pm",
+            userid:user.uid,
+            displayName : user.displayName,
+            username: (user.email).split("@")[0],
             verified: "true",
             text: tweetMessage,
-            avatar: "https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png",
+            avatar: user.photoURL,
             image:imgCheck,
             timestamp:firebase.firestore.FieldValue.serverTimestamp(),
         });
@@ -62,8 +71,8 @@ function TweetBox() {
 
             <form>
                 <div className = "tweetBox__input">
-                    <Avatar style = {{ marginLeft: "15px", height:"50px", width: "50px"}} />
-                    <input onChange = {e => setTweetmessage(e.target.value)} 
+                    <img src={user.photoURL} style = {{ marginLeft: "15px", height:"50px", width: "50px",borderRadius:"50%"}} />
+                    <textarea maxlength="200" onChange = {e => setTweetmessage(e.target.value)} 
                            value= {tweetMessage} 
                            placeholder = "What's happening?" 
                            type= "text" />
@@ -73,17 +82,27 @@ function TweetBox() {
                     <div className = "tweetBox__bottom__icons">
                         
                             <input type='file' id="image-upload" onChange={onImageUpload} hidden/> 
+                        
+                            
+                                <IconButton> 
+                                <label htmlFor="image-upload">
+                                    <Tooltip title="Upload Image" arrow>
+                                        <CropOriginalIcon id="image__icon" alt="Upload an image" style = {{color: "var(--twitter-color)"}} />
+                                    </Tooltip>
+                                </label>
+                                </IconButton>
+                            
+                                <IconButton>
+                                <label htmlFor="image-upload">
+                                    <Tooltip title="Upload Gif" arrow>
+                                        <GifIcon alt="Upload a gif" style = {{color: "var(--twitter-color)" , height: "40px", width : "40px"}}/>
+                                    </Tooltip>
+                                    </label>
+                                </IconButton>
+                            
+                        
                         <IconButton> 
-                            <label htmlFor="image-upload">
-                                <CropOriginalIcon style = {{color: "var(--twitter-color)"}} />
-                            </label>
-                        </IconButton>
-                        <IconButton> 
-                        <label htmlFor="image-upload">
-                            <GifIcon style = {{color: "var(--twitter-color)" , height: "40px", width : "40px"}}/>
-                        </label>
-                        </IconButton>
-                        <IconButton> <InsertEmoticonIcon style = {{color: "var(--twitter-color)"}} /> 
+                            <InsertEmoticonIcon onClick={addEmoji} style = {{color: "var(--twitter-color)"}} /> 
                         </IconButton>
                     </div>
                     <Button className= "tweetBox__tweetButton" 

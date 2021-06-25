@@ -11,28 +11,15 @@ import Profile from "./Profile";
 import Notifications from "./Notifications";
 import Lists from "./Lists";
 import Login from "./Login";
+import { useStateValue } from './StateProvider';
 
 function App() {
+
+  const [{user},dispatch] = useStateValue();  
   return (
     //BEM convention
     <div className="app">
-           <Sidebar /> 
-
-
-        <Switch>
-              <Route path="/" exact component={Home}></Route>
-              <Route path="/messages" exact component={Messages}></Route>
-              <Route path="/bookmarks" exact component={Bookmark}></Route>
-              <Route path="/explore" exact component={Explore}></Route>
-              <Route path="/profile" exact component={Profile}></Route>
-              <Route path="/notifications" exact component={Notifications}></Route>
-              <Route path="/lists" exact component={Lists}></Route> 
-
-          {/* <Route component={Nomatch}></Route> if 404 */}
-        </Switch>
-        {/* <Login /> */}
-
-            
+      {user? <Main /> : <Login />}                       
     </div>
   );
 }
@@ -45,6 +32,29 @@ const Home = () =>{
     </>
 
   )
-}       
+}   
+
+const Main = () =>{
+  return(
+    <>
+      <Sidebar /> 
+
+
+      <Switch>
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/messages" exact component={Messages}></Route>
+            <Route path="/bookmarks" exact component={Bookmark}></Route>
+            <Route path="/explore" exact component={Explore}></Route>
+            <Route path="/profile" exact component={Profile}></Route>
+            <Route path="/notifications" exact component={Notifications}></Route>
+            <Route path="/lists" exact component={Lists}></Route> 
+
+        {/* <Route component={Nomatch}></Route> if 404 */}
+      </Switch>
+  </>
+  )
+}
 
 export default App;
+
+
