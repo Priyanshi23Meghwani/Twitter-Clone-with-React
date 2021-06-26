@@ -18,9 +18,12 @@ function App() {
   const [{user},dispatch] = useStateValue();  
   return (
     //BEM convention
-    <div className="app">
-      {user? <Main /> : <Login />}                       
+    <>
+    <div className="app" id="demo">
+      {user? <Main /> : <Login />}                        
     </div>
+    <p id="message">Please open this site on a desktop.</p>   
+    </>
   );
 }
 

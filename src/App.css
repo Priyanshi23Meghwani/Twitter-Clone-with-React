@@ -13,3 +13,23 @@ body {
     margin-left: auto;
     padding: 0 10px;
 }
+
+#message {
+    display: none;
+  }
+  
+  @media (max-width: 500px){
+    #demo {
+      display: none;
+    }
+  
+    #message {
+      display: grid;
+      place-items: center;
+      margin-top: 100px;
+    }
+
+    app{
+        background-color: var(--twitter-color);
+    }
+  }

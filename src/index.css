@@ -3,7 +3,10 @@
   /* background-color: #15202B ; */
   padding:0;
 }
-
+/* 
+@media only screen (max-device-width:768px){
+  .body { display:none; }
+} */
 
 body {
   margin: 0;
