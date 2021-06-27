@@ -9,9 +9,9 @@ Twitter Clone is a project that I started to improve my ReactJs knowledge.
 It uses Firebase's Authentication/Database/Storage libraries for it's implementation.
 
 ## Features
-*Google Authentication
-*Post Tweets
-*Upload images
+* Google Authentication
+* Post Tweets
+* Upload images
 
 # Screenshots
 ## Sign In screen
