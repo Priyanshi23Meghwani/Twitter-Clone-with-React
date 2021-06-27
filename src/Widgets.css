@@ -1,5 +1,16 @@
 .widgets{
     flex:0.32;
+    overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.widgets::-webkit-scrollbar {
+    display:none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.widgets {
+    -ms-overflow-style: none;     /* IE and Edge */
+    scrollbar-width: none;        /* firefox */
 }
 
 .widgets__input {

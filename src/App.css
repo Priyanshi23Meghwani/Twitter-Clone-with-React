@@ -26,10 +26,9 @@ body {
     #message {
       display: grid;
       place-items: center;
-      margin-top: 100px;
+      font-size: 20px;
+      height:100vh;
+      background-color: var(--twitter-color);
     }
 
-    app{
-        background-color: var(--twitter-color);
-    }
   }

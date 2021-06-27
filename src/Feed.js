@@ -34,10 +34,6 @@ function Feed() {
                 <h3>Home</h3>
             </div>
             <TweetBox />
-            
-            
-                
-
 
                 { posts.length!==0?<FlipMove>{posts.map(post =>(
                     <Post 
