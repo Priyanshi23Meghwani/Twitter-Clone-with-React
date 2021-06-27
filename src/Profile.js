@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from './StateProvider';
 import FlipMove from "react-flip-move";
 import db from "./firebase";
-import axios from 'axios';
+import quotes from "./array.js";
 
 
 const NoPost = () =>{
@@ -41,13 +41,10 @@ function Profile(){
             }, []) 
             
 
-            useEffect(async() => {
-                const bio = await axios.get("https://quotes.rest/qod",{
-                    headers:{
-                        "Content-Type":"application/json"
-                    }
-                })
-                 quote_bio = bio.data.contents.quotes[0].quote;
+            useEffect(() => {
+                
+
+
             }, [])
 
     return(
@@ -90,7 +87,7 @@ function Profile(){
                     <p>@{(user.email).split("@")[0]}</p>
                 </div>
                 <div className="profile__body__text">
-                    <p>{quote_bio}</p>
+                    <p>{quotes[Math.floor(Math.random()*10)]}</p>
                 </div>
                 <div className="profile__body__icons">
                     <div className="profile__body__icons__div"> <LocationOnOutlinedIcon /> 

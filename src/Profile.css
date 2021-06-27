@@ -1,7 +1,16 @@
 .profile{
     flex:0.48;
     border-right: 1px solid var(--twitter-background);
-    
+    overflow-y: scroll;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.profile::-webkit-scrollbar {
+    display:none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.profile {
+    -ms-overflow-style: none;     /* IE and Edge */
+    scrollbar-width: none;        /* firefox */
 }
 
 .profile__header{
