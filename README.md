@@ -1,3 +1,16 @@
+# [Twitter Clone](https://twitter-clone-5ef11.web.app/)
+This [Twitter Clone](https://twitter-clone-5ef11.web.app/) project is built using:
+* React JS 
+* Firebase  
+* [Material-UI](https://material-ui.com/) 
+* Vanilla CSS 
+
+# Screenshots
+## Sign in screen
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
